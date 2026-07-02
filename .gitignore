@@ -1,0 +1,5 @@
+# Lavalink
+*.log
+logs/
+data/
+*.env

@@ -1,0 +1,80 @@
+server:
+  port: 2333
+  address: 0.0.0.0
+
+lavalink:
+  server:
+    password: "${LAVALINK_PASSWORD:youshallnotpass}"
+    sources:
+      - soundcloud
+      - http
+      - local
+    playerUpdateInterval: 5
+    isTrace: false
+    useSeekGhostFrame: true
+    untrickle: false
+    sentenceCaseLangKeys: true
+    bufferQueueSize: 64
+    gcInterval: 120
+
+plugins:
+  youtube:
+    enabled: true
+    allowSearch: true
+    allowDirectVideoIds: true
+    allowDirectPlaylistIds: true
+    clients:
+      - ANDROID_VR
+      - IOS
+      - TVHTML5_SIMPLY
+      - WEB
+      - WEBEMBEDDED
+    pot:
+      token: "${YOUTUBE_POT_TOKEN:}"
+      visitorData: "${YOUTUBE_VISITOR_DATA:}"
+    oauth:
+      enabled: false
+
+  lavasrc:
+    enabled: true
+    sources:
+      - spotify
+      - appleMusic
+      - deezer
+      - tidal
+      - soundcloud
+      - bandcamp
+      - youtube
+      - yandex
+    spotify:
+      clientId: "${SPOTIFY_CLIENT_ID:}"
+      clientSecret: "${SPOTIFY_CLIENT_SECRET:}"
+      playlistPageLimit: 1
+      trackLoadTimeout: 10
+      encodeUsingTokens: false
+    appleMusic:
+      countryCode: "us"
+    deezer:
+      countryCode: "us"
+      decryptionKeys: []
+    tidal:
+      countryCode: "us"
+
+metrics:
+  prometheus:
+    enabled: false
+    port: 8080
+
+logging:
+  level:
+    root: INFO
+    io.lavalink: INFO
+    lavalink.server: INFO
+    dev.lavalink.youtube: INFO
+  file:
+    max-history: 30
+    max-size: 100MB
+  logback:
+    rollingpolicy:
+      max-file-size: 100MB
+      max-history: 30
